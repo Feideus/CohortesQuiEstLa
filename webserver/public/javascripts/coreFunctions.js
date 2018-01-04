@@ -7,10 +7,9 @@ function identifierCohorte(horraire,semaine)
 {
     //horraire,semaine peuvent etre optionnels selon l'api
     //appel à l'api et initialisation de etudiantsEtPhotos et des zones html appropriées
-    
 }
 
-function presentAbscent(bool)
+function presentAbsent(bool)
 {
     var nom = document.getElementById("nomEtudiant").innerHTML;
     
