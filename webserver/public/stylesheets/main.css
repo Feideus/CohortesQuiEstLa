@@ -1,0 +1,61 @@
+/**
+ * Grid container
+ */
+#main {
+	margin-top: 9em;
+}
+#tiles {
+  list-style-type: none;
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 0;
+  padding: 0;
+}
+#tiles li:hover img{
+	opacity:0.8;
+}
+
+#tiles li {
+ 	width: 280px;
+	background-color: #ffffff;
+	border: 1px solid #dedede;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: none;
+	cursor: pointer;
+	border-radius: 0.2em;
+}
+#tiles li img{
+	border-top-left-radius:0.2em;
+	border-top-right-radius:0.2em;
+}
+#tiles li.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#tiles li img {
+ 	display: block;
+}
+
+
+@media only screen and (max-width:640px) and (min-width:480px) {
+	#main {
+		margin-top: 7em;
+	}
+}
+
+@media only screen and (max-width:480px) and (min-width:320px) {
+	#main {
+		margin-top: 9.5em;
+	}
+}
+/*--media Quries for 320px-monitors-*/
+@media only screen and (max-width:320px) and (min-width:240px) {
+	#main {
+		margin-top: 9em;
+	}
+	#tiles li {
+		width: 266px;
+	}
+}

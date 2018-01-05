@@ -1,31 +1,38 @@
 
-var etudiantsEtPhotos = [{}]; //tableau de couple nom:photo
-var listePrésence = [{}]; //tableau de couple nom:présence
+
+var etudiantsEtPhotos = [{}]; //tableau de couple nmEtudiant:nom:photo
+var listePresence = [{}]; //tableau de couple nom:présence
 var indexEtudiantCourant = 0;
 
-function identifierCohorte(horraire,semaine)
+function identifierCohorte()
 {
-    //horraire,semaine peuvent etre optionnels selon l'api
-    //appel à l'api et initialisation de etudiantsEtPhotos et des zones html appropriées
+    var horraire = document.getElementById("horraire").innerHTML;
+    var semaine =  document.getElementById("semaine").innerHTML;
+    var salle = document.getElementById("salle").innerHTML;
+    
+    if((horraire === parseInt(horraire, 10)) && (semaine === parseInt(semaine, 10)) && salle !== "")
+    {
+        etudiantsEtPhotos = httpGetAsync("local.test/basicApi?horraire="+horraire+"&semaine="+semaine+"&salle="+salle);
+    }
 }
 
-function presentAbsent(bool)
+function presentAbscent(bool)
 {
     var nom = document.getElementById("nomEtudiant").innerHTML;
-    
+
     if(bool === true)
     {
-        listePrésence.push({nom:nom,presence:"présent"});
+        listePresence.push({nom:nom,presence:"present"});
     }
     else if(bool === false)
     {
-        listePrésence.push({nom:nom,presence:"abscent"});
+        listePresence.push({nom:nom,presence:"absent"});
     }
     else
     {
-        listePrésence.push({nom:nom,presence:"erreur"});
+        listePresence.push({nom:nom,presence:"erreur"});
     }
-    
+
     setNextEtudiant();
 }
 
@@ -38,5 +45,24 @@ function setNextEtudiant()
 
 function validerListePresence()
 {
-    //envoyer listePresence à l'api
+    var erreur = 0;
+    
+    for(var i in listePresence)
+    {
+     if(listePresence[i].presence !== "present" || listePresence[i].presence !== "absent")
+     {
+         erreur = 1;
+     }
+    }
+    
+    if(erreur === 0)
+    {
+        httpGetAsync("local.test/responseApi?listePresence="+listePresence);
+    }
+    else
+    {
+        alert("certaines présences/absences n'ont pas étées relevées ! ");
+    }
 }
+
+

@@ -1,8 +1,244 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* reset */
+html,body,div,span,h3,p,label,header
+{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+header,section {display: block;}
+ul{list-style:none;margin:0px;padding:0px;}
+img{max-width:100%;}
+/*end reset*/
+body{
+	font-family: 'Open Sans', sans-serif;
+	background:#F0EFEE;
+}
+/*---start-wrap----*/
+.wrap{
+	width:80%;
+	margin:0 auto;
+}
+/*---start-header----*/
+.header{
+	background: 0px 0px #FFF;
+	padding: 1.5em 0 1.2em;
+	border-bottom: 1px solid rgba(214, 213, 212, 0.64);
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 999;
+}
+.logo{
+	float:left;
+}
+.logo img{
+	display:inline-block;
+}
+#buttonV{
+	border: 1px;
+	padding:4px 10px 4px 10px;
+	border-radius:8px;
+	background-color: rgba(124, 121, 125, 0.48);
+	font:bold 15px;
+	color:#fff;
+}
+#buttonV:hover{
+	background-color: rgb(184, 174, 151);
+	cursor : pointer;
+}
+#button:active{
+	background-color: rgba(124, 121, 125, 0.83);
+}
+.valid{
+	float: right;
 }
 
-a {
-  color: #00B7FF;
+#buttonH{
+	float: left;
+}
+#buttonA{
+	float right;
+}
+.here{
+	margin-top : 0.7em;
+	width:76px;
+	display:inline-block;
+	margin-left : 1.2em;
+	float: left;
+
+}
+.here span{
+	font-family: 'Open Sans', sans-serif;
+}
+.away{
+
+	display:inline-block;
+	border-radius:30em;
+	-webkit-border-radius:30em;
+	-moz-border-radius:30em;
+	-o-border-radius:30em;
+	float:right;
+	margin-right:2.5em;
+}
+/*-------------------------------------------------------------*/
+/* chekcbox*/
+input[type=checkbox] {
+	visibility: hidden;
+}
+
+.ChekBoxes {
+	width: 50px;
+	height: 10px;
+	background: #333;
+	margin: 20px auto;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	position: relative;
+
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.ChekBoxes label {
+	display: block;
+	width: 16px;
+	height: 16px;
+
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	-ms-transition: all .4s ease;
+	transition: all .4s ease;
+	cursor: pointer;
+	position: absolute;
+	top: -3px;
+	left: -3px;
+
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	background: rgb(169, 170, 161);
+
+}
+
+.ChekBoxes input[type=checkbox]:checked + label {
+	left: 37px;
+}
+/*end checkbox*/
+/*---------------------------------------------------------------*/
+.post-basic-info{
+	padding: 7% 7% 5% 7%;
+}
+.post-basic-info h3 a{
+	color: #717171;
+	font-size: 1.2em;
+	margin-bottom: 0.2em;
+	display: block;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+}
+.post-basic-info h3 a:hover{
+	color:#B9CB41;
+}
+.post-basic-info span a{
+	color:#ACAAAA;
+	font-size:0.9em;
+}
+.post-basic-info span a label{
+	height:12px;
+	width:12px;
+	display:inline-block;
+	background:url(../images/map-pin.png) no-repeat 0px 0px;
+	margin-right: 0.4em;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+}
+.post-basic-info span a:hover{
+	color:#B9CB41;
+}
+.post-basic-info p{
+	font-size: 0.875em;
+	color: #B7B5B5;
+	margin: 0.6em 0;
+	line-height: 1.5em;
+}
+/*--info--*/
+.info{
+	border-top: 1px solid rgba(183, 181, 181, 0.36);
+
+}
+h3.style {
+	font: 400 13px/28px 'Open Sans', sans-serif;
+	color: #363636;
+	text-align: left;
+	text-transform: uppercase;
+	padding: 0.8em 0 0;
+}
+
+@media only screen and (max-width:1440px) and (min-width:1366px) {
+	.wrap{
+		width:85%;
+	}
+}
+
+@media only screen and (max-width:1366px) and (min-width:1280px) {
+	.wrap{
+		width:90%;
+	}
+
+}
+
+@media only screen and (max-width:1280px) and (min-width:1024px) {
+	.wrap{
+		width:80%;
+	}
+
+}
+
+@media only screen and (max-width:1024px) and (min-width:768px) {
+	.wrap{
+		width:90%;
+	}
+
+}
+
+@media only screen and (max-width:768px) and (min-width:640px) {
+	.wrap{
+		width:90%;
+	}
+}
+
+@media only screen and (max-width:640px) and (min-width:480px) {
+	.wrap{
+		width:90%;
+	}
+	.header {
+		padding: 1em 0 0.6em;
+	}
+}
+
+@media only screen and (max-width:480px) and (min-width:320px) {
+	.wrap{
+		width:90%;
+	}
+	.header {
+		padding: 1em 0 0.6em;
+	}
+}
+
+@media only screen and (max-width:320px) and (min-width:240px) {
+	.wrap{
+		width: 90%;
+	}
+	.header {
+		padding: 1em 0 0.6em;
+	}
 }
