@@ -30,7 +30,7 @@ body{
 .logo img{
 	display:inline-block;
 }
-#buttonV{
+.buttonV{
 	border: 1px;
 	padding:4px 10px 4px 10px;
 	border-radius:8px;
@@ -38,6 +38,17 @@ body{
 	font:bold 15px;
 	color:#fff;
 }
+
+.textareaV
+{
+	border: 1px;
+	padding:4px 10px 4px 10px;
+	border-radius:8px;
+	background-color: rgba(124, 121, 125, 0.48);
+	font:bold 15px;
+	color:#fff;
+}
+
 #buttonV:hover{
 	background-color: rgb(184, 174, 151);
 	cursor : pointer;

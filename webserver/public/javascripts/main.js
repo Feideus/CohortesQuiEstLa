@@ -15,9 +15,6 @@ $(document).ready(function(){
   $("h3").each(function(){
     listeEleveAbsent.push($(this).text());
   });
-    function addContent(src_images,name,number){
-        $('#tiles').append('<li><img src="'+ src_images +'" width="282" height="118"><div class="post-info" id="div'+number+'"><div class="post-basic-info"><h3>'+name+'</h3></div><div class="info"><div class="here"><span class="state">Absent</span></div><div class="away"><div class="ChekBoxes"><input type="checkbox" value="None" id="slide_div'+number+'" name="check" /><label class ="labelSlide" for="slide_div'+number+'"></label></div></div></div></div></li>');
-      }
 
     $(".labelSlide[for^='slide_div'], .labelSlide[htmlFor^='slide_div']").click(function(){
         console.log("coucou");
@@ -31,17 +28,19 @@ $(document).ready(function(){
         if (text == 'Absent'){
           listeElevePresent.push($('#'+ val +"  h3").text());
           listeEleveAbsent.splice( $.inArray($('#'+ val +"  h3").text(), listeEleveAbsent), 1 );
+          presentAbscent(true);
           $('#'+ val +"  .state").empty();
           $('#'+ val +"  .state").append('Present');
         }
         if(text == 'Present'){
           listeElevePresent.splice( $.inArray($('#'+ val +"  h3").text(), listeElevePresent), 1 );
           listeEleveAbsent.push($('#'+ val +"  h3").text());
+          presentAbscent(false);
           $('#'+ val +"  .state").empty();
           $('#'+ val +"  .state").append('Absent');
         }
     });
-    $("#buttonV").click(function(){
+    $(".buttonV").click(function(){
       console.log("coucou");
       console.log(listeElevePresent);
       console.log(listeEleveAbsent);

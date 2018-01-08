@@ -12,4 +12,4 @@ function httpGetAsync(theUrl, callback)
 
 
 
-    console.log("script Ready");
+    console.log("script request Ready");
