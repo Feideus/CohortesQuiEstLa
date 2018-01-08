@@ -24,7 +24,8 @@ var router = express.Router();              // get an instance of the express Ro
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/listeElevesApi', function(req, res) 
 {
-    var liste = new Array({INE:11310461,Nom:"Ulrich",Photo:"/Me.jpg"});
+    var liste = [];
+    liste = {0:{INE:11310461,Nom:"Ulrich",Photo:"../img/Me.jpg"},1:{INE:11254521,Nom:"Rolor",Photo:"../img/vide"}};
     res.json(liste);   
 });
 
