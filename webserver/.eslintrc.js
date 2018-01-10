@@ -2,7 +2,7 @@ module.exports = {
     "env": {
         "browser": true
     },
-    "extends": "eslint:recommended",
+    "extends": "jquery",
     "rules": {
         "accessor-pairs": "error",
         "array-bracket-newline": "error",

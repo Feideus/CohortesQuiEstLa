@@ -7,7 +7,7 @@
     "build:js": "browserify   public/javascripts/coreFunctions.js > public/javascripts/browserify_test_bundle.js",
     "start": "node app.js",
     "clean": "rm public/javascripts/browserify_test_bundle.js",
-    "eslint": "eslint public",
+    "eslint": "eslint public/javascripts/coreFunctions.js",
     "relance": "npm run clean:bundle && npm run build:js && npm run start"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "eslint": "4.10.0",
+    "eslint-config-jquery": "1.0.1",
     "jquery": "3.2.1"
   }
 }

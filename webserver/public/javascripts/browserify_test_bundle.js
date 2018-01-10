@@ -10254,9 +10254,9 @@ return jQuery;
 } );
 
 },{}],2:[function(require,module,exports){
-//
-//basicApi?horraire="+horraire+"&semaine="+semaine+"&salle="+salle
-
+/* eslint-disable no-invalid-this */
+/*eslint-env node*/
+'use strict'
 var etudiantsEtPhotos = []; //tableau de couple INE:nom:photo
 var listePresence = []; //tableau de couple nom:présence
 //var indexEtudiantCourant = 0;
@@ -10275,7 +10275,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function loadingHSS(){
     var content = [];
     content = JSON.parse(httpGet("http://local.test:7001/HSS"));
-    console.log(content);
     fillOptionHorraire(content[0]);
     fillOptionSemaine(content[1]);
     fillOptionSalle(content[2]);
@@ -10295,7 +10294,7 @@ function fillOptionHorraire(content){
           $('#salle').append('<option value="'+content[i]+'">'+content[i]+'</option>');
     }
   }
-  document.getElementById('idCohorte').onclick = function (e){
+  document.getElementById('idCohorte').onclick = function (){
     if (flagToCohorte == false){
     flagToCohorte = true;
     identifierCohorte();
@@ -10310,9 +10309,9 @@ function fillOptionHorraire(content){
         identifierCohorte();
       }
     }
-    // This will work for dynamically created element
-    $('body').on('click', ".labelSlide[for^='slide_div'], .labelSlide[htmlFor^='slide_div']", function(e){
-       var temp = $(this).attr('for');
+    $('#tiles').on('click', ".labelSlide[for^='slide_div'], .labelSlide[htmlFor^='slide_div']", function(){
+       var that = $(this);
+       var temp = that.attr('for');
        var temp2 = temp.split('_');
        var val = temp2[1];
        var text = $('#'+ val +"  .state").text();
@@ -10346,29 +10345,24 @@ function identifierCohorte()
     horraire = getTextSelect("horraire");
     semaine = getTextSelect("semaine");
     salle = getTextSelect("salle");
-
-
-
     var content = document.getElementById("wait");
-    if ( content != null){
+    if(content != null){
       content.remove();
     }
         if(salle !== "")
         {
-            console.log(horraire,semaine,salle);
+
             etudiantsEtPhotos = JSON.parse(httpGet("http://local.test:7001/listeElevesApi?horraire="+horraire+"&semaine="+semaine+"&salle="+salle));
-            console.log(etudiantsEtPhotos);
+
             if(etudiantsEtPhotos !== 'undefined')
             {
                 buildhtml();
             }
         }
 
-
 }
 function presentAbscent(nom,bool)
 {
-    //var nom = document.getElementById("nomEtudiant").innerHTML;
     var flag = false;
     for (var i in listePresence) {
       if (listePresence[i].nom == nom) {
@@ -10400,23 +10394,11 @@ function presentAbscent(nom,bool)
           listePresence.push({nom:nom,presence:"erreur"});
       }
     }
-
-
-    console.log(listePresence);
 }
 
 function validerListePresence()
 {
     var erreur = 0;
-
-    /*for(var i in listePresence)
-    {
-     if(listePresence[i].presence !== "present" || listePresence[i].presence !== "absent")
-     {
-         erreur = 1;
-     }
-    }*/
-
     if(erreur === 0)
     {
         httpGet("http://local.test:7001/presenceElevesApi?listePresence="+JSON.stringify(listePresence));
@@ -10431,10 +10413,8 @@ function buildhtml()
 {
     var cpt = 0;
     var x;
-    console.log("remplissage");
-    for(x in etudiantsEtPhotos)
+    for(x=0;x<Object.keys(etudiantsEtPhotos).length;x++)
     {
-        console.log(etudiantsEtPhotos[cpt.toString()].INE,etudiantsEtPhotos[cpt.toString()].Photo);
         listePresence.push({nom:etudiantsEtPhotos[cpt.toString()].INE,presence:"absent"});
         addContent(etudiantsEtPhotos[cpt.toString()].Photo,etudiantsEtPhotos[cpt.toString()].INE,etudiantsEtPhotos[cpt.toString()].Nom,cpt);
         cpt++;
@@ -10442,15 +10422,7 @@ function buildhtml()
 }
 
 function addContent(src_images,INE,name,number){
-        console.log("construction du block eleve");
         $('#tiles').append('<li><img src="'+ src_images +'" width="282" height="218"><div class="post-info" id="div'+number+'"><div class="post-basic-info"><h3>'+INE+'</h3><h3>'+name+'</h3></div><div class="info"><div class="here"><span class="state">Absent</span></div><div class="away"><div class="ChekBoxes"><input type="checkbox" value="None" id="slide_div'+number+'" name="check" /><label class ="labelSlide" for="slide_div'+number+'"></label></div></div></div></div></li>');
-        //$('#tiles').append('<li><h2>COucou</h2></li>');
-}
-
-    console.log("script Core Ready");
-
-function getProperty(INE){
-        return etudiantsEtPhotos[INE];
 }
 function httpGet(theUrl)
 {
