@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:js": "browserify main.js > public/javascripts/browserify_test_bundle.js",
+    "clean:bundle": "rm public/javascripts/browserify_test_bundle.js",
+    "build:js": "browserify   public/javascripts/coreFunctions.js > public/javascripts/browserify_test_bundle.js",
     "start": "node app.js",
     "clean": "rm public/javascripts/browserify_test_bundle.js",
-    "eslint": "eslint public"
+    "eslint": "eslint public",
+    "relance": "npm run clean:bundle && npm run build:js && npm run start"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -21,6 +23,7 @@
     "uniq": "1.0.1"
   },
   "devDependencies": {
-    "eslint": "4.10.0"
+    "eslint": "4.10.0",
+    "jquery": "3.2.1"
   }
 }

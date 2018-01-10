@@ -8,6 +8,8 @@ var flagToCohorte = false; // set if Cohorte is loaded or not
 var horraire;
 var salle;
 var semaine;
+var $;
+$ = require('jquery');
 function getTextSelect(string) {
   var e = document.getElementById(string);
   var f = e.options[e.selectedIndex].text;
@@ -52,6 +54,24 @@ function fillOptionHorraire(content){
         identifierCohorte();
       }
     }
+    // This will work for dynamically created element
+    $('body').on('click', ".labelSlide[for^='slide_div'], .labelSlide[htmlFor^='slide_div']", function(e){
+       var temp = $(this).attr('for');
+       var temp2 = temp.split('_');
+       var val = temp2[1];
+       console.log("////////////////////////////////////");
+       var text = $('#'+ val +"  .state").text();
+       if (text == 'Absent'){
+         presentAbscent($('#'+ val +"  h3").text(),true);
+         $('#'+ val +"  .state").empty();
+         $('#'+ val +"  .state").append('Present');
+       }
+       if(text == 'Present'){
+         presentAbscent($('#'+ val +"  h3").text(),false);
+         $('#'+ val +"  .state").empty();
+         $('#'+ val +"  .state").append('Absent');
+       }
+    });
   }
   document.getElementById('validationButton').onclick = function(){
     if (flagToCohorte == true){
@@ -168,7 +188,7 @@ function buildhtml()
 
 function addContent(src_images,INE,name,number){
         console.log("construction du block eleve");
-        $('#tiles').append('<li><img src="'+ src_images +'" width="282" height="118"><div class="post-info" id="div'+number+'"><div class="post-basic-info"><h3>'+INE+'</h3><h3>'+name+'</h3></div><div class="info"><div class="here"><span class="state">Absent</span></div><div class="away"><div class="ChekBoxes"><input type="checkbox" value="None" id="slide_div'+number+'" name="check" /><label class ="labelSlide" for="slide_div'+number+'"></label></div></div></div></div></li>');
+        $('#tiles').append('<li><img src="'+ src_images +'" width="282" height="218"><div class="post-info" id="div'+number+'"><div class="post-basic-info"><h3>'+INE+'</h3><h3>'+name+'</h3></div><div class="info"><div class="here"><span class="state">Absent</span></div><div class="away"><div class="ChekBoxes"><input type="checkbox" value="None" id="slide_div'+number+'" name="check" /><label class ="labelSlide" for="slide_div'+number+'"></label></div></div></div></div></li>');
         //$('#tiles').append('<li><h2>COucou</h2></li>');
 }
 
@@ -176,4 +196,11 @@ function addContent(src_images,INE,name,number){
 
 function getProperty(INE){
         return etudiantsEtPhotos[INE];
+}
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
 }
