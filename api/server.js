@@ -1,7 +1,7 @@
 // server.js
 
 // BASE SETUP
-// =============================================================================
+// =======================================  ======================================
 
 // call the packages we need
 var express    = require('express');        // call express
@@ -35,6 +35,12 @@ router.get('/HSS', function(req, res)
     res.json(liste);
 });
 router.get('/presenceElevesApi', function(req, res) {
+    console.log("reception message");
+    console.log(res);
+});
+
+router.post('/presenceElevesApi', function(req, res) {
+    console.log("reception message");
     console.log(res);
 });
 

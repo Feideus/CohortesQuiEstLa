@@ -5,7 +5,4 @@ function httpGet(theUrl)
     xmlHttp.send( null );
     return xmlHttp.responseText;
 }
-
-
-
     console.log("script request Ready");

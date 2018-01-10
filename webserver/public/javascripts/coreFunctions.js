@@ -118,17 +118,17 @@ function validerListePresence()
 {
     var erreur = 0;
 
-    for(var i in listePresence)
+    /*for(var i in listePresence)
     {
      if(listePresence[i].presence !== "present" || listePresence[i].presence !== "absent")
      {
          erreur = 1;
      }
-    }
+    }*/
 
     if(erreur === 0)
     {
-        httpGet("local.test/responseApi?listePresence="+listePresence);
+        httpGet("http://local.test:7001/presenceElevesApi?listePresence="+JSON.stringify(listePresence));
     }
     else
     {
