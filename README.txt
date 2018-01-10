@@ -1,8 +1,3 @@
-Nginx est configuré sur le domain local.test
-une suite d'entiers pairs peut etre recuperer sur local.test/api
-la liste des sous dossiers de l'api peut etre recuperer avec local.test/tree
+Projet JSAU
 
-/!\ Il est necessaire de de calculer l'arborescence dans desktop
-    pour pouvoir demande à apiserver de l'afficher.
-    
-coucou
+Ceci est un gestionnaire de présence/abscence de personne à l'interieur de l'intitut Galilée
