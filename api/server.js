@@ -24,9 +24,25 @@ var router = express.Router();              // get an instance of the express Ro
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/listeElevesApi', function(req, res)
 {
-    var liste = [];
-    liste = {0:{INE:11310461,Nom:"Ulrich",Photo:"../img/Me.jpg"},1:{INE:11254521,Nom:"Rolor",Photo:"../img/Me.jpg"}};
-    res.json(liste);
+    var horraire = req.query.horraire;
+    var semaine = req.query.semaine;
+    var salle = req.query.salle;
+    
+    var liste1 = [];
+    var liste2 = [];
+
+    liste1 = {0:{INE:11310461,Nom:"Ulrich",Photo:"../img/Me.jpg"},1:{INE:11254521,Nom:"Rolor",Photo:"../img/Me.jpg"}};
+    liste2 = {0:{INE:11310461,Nom:"Hollande",Photo:"../img/index.jpg"},1:{INE:11254521,Nom:"Macron",Photo:"../img/brigitte.jpg"}};
+    
+    if(horraire === "10h" && semaine === "2" && salle === "F202" )
+    {
+        res.json(liste1); 
+    }
+    else
+    {
+        res.json(liste2);
+    }
+   
 });
 router.get('/HSS', function(req, res)
 {

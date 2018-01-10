@@ -5,7 +5,7 @@ var etudiantsEtPhotos = []; //tableau de couple INE:nom:photo
 var listePresence = []; //tableau de couple nom:présence
 //var indexEtudiantCourant = 0;
 var flagToCohorte = false; // set if Cohorte is loaded or not
-function getTextSelect(string){
+function getTextSelect(string) {
   var e = document.getElementById(string);
   var f = e.options[e.selectedIndex].text;
   return f;
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fillOptionSemaine(content[1]);
     fillOptionSalle(content[2]);
   }
-  function fillOptionHorraire(content){
+function fillOptionHorraire(content){
     for (var i = 0; i<content.length; i++) {
         $('#horraire').append('<option value="'+content[i]+'">'+content[i]+'</option>');
     }
@@ -59,13 +59,16 @@ function identifierCohorte()
     var semaine = getTextSelect("semaine");
     var salle = getTextSelect("salle");
 
+
+
     var content = document.getElementById("wait");
     if ( content != null){
       content.remove();
     }
         if(salle !== "")
         {
-            etudiantsEtPhotos = JSON.parse(httpGet("http://local.test:7001/listeElevesApi"));
+            console.log(horraire,semaine,salle);
+            etudiantsEtPhotos = JSON.parse(httpGet("http://local.test:7001/listeElevesApi?horraire="+horraire+"&semaine="+semaine+"&salle="+salle));
             console.log(etudiantsEtPhotos);
             if(etudiantsEtPhotos !== 'undefined')
             {
@@ -145,14 +148,14 @@ function buildhtml()
     {
         console.log(etudiantsEtPhotos[cpt.toString()].INE,etudiantsEtPhotos[cpt.toString()].Photo);
         listePresence.push({nom:etudiantsEtPhotos[cpt.toString()].INE,presence:"absent"});
-        addContent(etudiantsEtPhotos[cpt.toString()].Photo,etudiantsEtPhotos[cpt.toString()].INE,cpt);
+        addContent(etudiantsEtPhotos[cpt.toString()].Photo,etudiantsEtPhotos[cpt.toString()].INE,etudiantsEtPhotos[cpt.toString()].Nom,cpt);
         cpt++;
     }
 }
 
-function addContent(src_images,name,number){
+function addContent(src_images,INE,name,number){
         console.log("construction du block eleve");
-        $('#tiles').append('<li><img src="'+ src_images +'" width="282" height="118"><div class="post-info" id="div'+number+'"><div class="post-basic-info"><h3>'+name+'</h3></div><div class="info"><div class="here"><span class="state">Absent</span></div><div class="away"><div class="ChekBoxes"><input type="checkbox" value="None" id="slide_div'+number+'" name="check" /><label class ="labelSlide" for="slide_div'+number+'"></label></div></div></div></div></li>');
+        $('#tiles').append('<li><img src="'+ src_images +'" width="282" height="118"><div class="post-info" id="div'+number+'"><div class="post-basic-info"><h3>'+INE+'</h3><h3>'+name+'</h3></div><div class="info"><div class="here"><span class="state">Absent</span></div><div class="away"><div class="ChekBoxes"><input type="checkbox" value="None" id="slide_div'+number+'" name="check" /><label class ="labelSlide" for="slide_div'+number+'"></label></div></div></div></div></li>');
         //$('#tiles').append('<li><h2>COucou</h2></li>');
 }
 
