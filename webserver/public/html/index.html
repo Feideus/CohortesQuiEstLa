@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title> Cohorte JSAU </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="../stylesheets/style.css" rel='stylesheet' type='text/css' />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -10,8 +11,8 @@
 		<script src="../javascripts/jquery.imagesloaded.js"></script>
 		<script src="../javascripts/jquery.wookmark.js"></script>
 		<script src="../javascripts/main.js"></script>
-                                <script src="../javascripts/getrequest.js"></script>
-                <script src="../javascripts/coreFunctions.js"></script>
+    <script src="../javascripts/getrequest.js"></script>
+    <script src="../javascripts/coreFunctions.js"></script>
 
 	</head>
 	<body>
@@ -21,11 +22,28 @@
 					<span>Cohorte JSAU </span>
 				</div>
 				<div class="valid">
-                                    <textarea id="horraire" class="textareaV">horraire</textarea>
-                                    <textarea id="semaine" class="textareaV">semaine</textarea>
-                                    <textarea id="salle" class="textareaV">salle</textarea>
-                                    <button onclick="identifierCohorte()" class="textareaV">identifierCohorte</button>
-                                    <input type="button" onclick="validerListePresence()" class="buttonV" value="Validation" />
+					<ul id="selectCohorte">
+						<li  class="textareaV">
+							<label for="horraire">horraire </label>
+							<SELECT id="horraire" name="horraire" size="1">
+
+							</SELECT>
+						</li>
+						<li  class="textareaV">
+							<label for="semaine">semaine</label>
+							<SELECT id="semaine" name="semaine" size="1">
+
+							</SELECT>
+						</li>
+						<li  class="textareaV">
+							<label for="salle">salle</label>
+							<SELECT id="salle" name="salle" size="1">
+
+							</SELECT>
+						</li>
+					</ul>
+          <button id ="idCohorte" class="textareaV">identifierCohorte</button>
+  				<input type="button" id='validationButton' class="buttonV textareaV" value="Validation" />
 				</div>
 			</div>
 		</div>
@@ -33,178 +51,7 @@
 			<div class="wrap">
 			 <div id="main" role="main">
 			      <ul id="tiles">
-			        <li >
-			        	<img src="../img/img8.jpg" width="282" height="210">
-			        	<div class="post-info" id="div1">
-			        		<div class="post-basic-info">
-				        		<h3>Jean Philippe</h3>
-			        		</div>
-									<div class="info">
-										<div class="here">
-											<span class="state">Absent</span>
-										</div>
-										<div class="away">
-											<div class="ChekBoxes">
-												<input type="checkbox" value="None"  id="slide_div1" name="check" />
-												<label class ="labelSlide" for="slide_div1"></label>
-											</div></div>
-									</div>
-			        	</div>
-			        </li>
-			        <li >
-			        	<img src="../img/img5.jpg" width="282" height="210">
-								<div class="post-info" id="div2">
-					        		<div class="post-basic-info">
-						        		<h3>Jean Eude</h3>
-												<div class="info">
-													<div class="here">
-														<span class="state">Absent</span>
-													</div>
-													<div class="away">
-														<div class="ChekBoxes">
-															<input type="checkbox" value="None"  id="slide_div2" name="check" />
-															<label class ="labelSlide" for="slide_div2"></label>
-														</div>
-													</div>
-												</div>
-					        		</div>
-					       </div>
-							</li>
-			        <li >
-			        	<img src="../img/img7.jpg" width="282" height="210">
-			        	<div class="post-info" id="div3">
-			        		<div class="post-basic-info">
-				        		<h3>Jean ValJean</h3>
-										<div class="info">
-											<div class="here">
-												<span class="state">Absent</span>
-											</div>
-											<div class="away">
-												<div class="ChekBoxes">
-													<input type="checkbox" value="None"  id="slide_div3" name="check" />
-													<label class ="labelSlide" for="slide_div3"></label>
-												</div>
-											</div>
-										</div>
-			        		</div>
-
-			        	</div>
-			        </li>
-			        <li >
-			        	<img src="../img/img4.jpg" width="282" height="210">
-			        	<div class="post-info" id="div4">
-			        		<div class="post-basic-info">
-				        		<h3>Jean CuloSki</h3>
-			        		</div>
-									<div class="info">
-										<div class="here">
-											<span class="state">Absent</span>
-										</div>
-										<div class="away">
-											<div class="ChekBoxes">
-												<input type="checkbox" value="None"  id="slide_div4" name="check" />
-												<label class ="labelSlide" for="slide_div4"></label>
-											</div>
-										</div>
-									</div>
-			        	</div>
-			        </li>
-							<li >
-								<img src="../img/img6.jpg" width="282" height="210">
-								<div class="post-info" id="div5">
-									<div class="post-basic-info">
-										<h3>Jean CuloSki</h3>
-									</div>
-									<div class="info">
-										<div class="here">
-											<span class="state">Absent</span>
-										</div>
-										<div class="away">
-											<div class="ChekBoxes">
-												<input type="checkbox" value="None"  id="slide_div5" name="check" />
-												<label class ="labelSlide" for="slide_div5"></label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li >
-								<img src="../img/img8.jpg" width="282" height="210">
-								<div class="post-info" id="div6">
-									<div class="post-basic-info">
-										<h3>Jean CuloSki</h3>
-									</div>
-									<div class="info">
-										<div class="here">
-											<span class="state">Absent</span>
-										</div>
-										<div class="away">
-											<div class="ChekBoxes">
-												<input type="checkbox" value="None"  id="slide_div6" name="check" />
-												<label class ="labelSlide" for="slide_div6"></label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li >
-								<img src="../img/img1.jpg" width="282" height="210">
-								<div class="post-info" id="div7">
-									<div class="post-basic-info">
-										<h3>Jean CuloSki</h3>
-									</div>
-									<div class="info">
-										<div class="here">
-											<span class="state">Absent</span>
-										</div>
-										<div class="away">
-											<div class="ChekBoxes">
-												<input type="checkbox" value="None"  id="slide_div7" name="check" />
-												<label class ="labelSlide" for="slide_div7"></label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li >
-								<img src="../img/img2.jpg" width="282" height="210">
-								<div class="post-info" id="div8">
-											<div class="post-basic-info">
-												<h3>Jean Eude</h3>
-												<div class="info">
-													<div class="here">
-														<span class="state">Absent</span>
-													</div>
-													<div class="away">
-														<div class="ChekBoxes">
-															<input type="checkbox" value="None"  id="slide_div8" name="check" />
-															<label class ="labelSlide" for="slide_div8"></label>
-														</div>
-													</div>
-												</div>
-											</div>
-								 </div>
-							</li>
-							<li >
-								<img src="../img/img5.jpg" width="282" height="210">
-								<div class="post-info" id="div9">
-											<div class="post-basic-info">
-												<h3>Jean Eude</h3>
-												<div class="info">
-													<div class="here">
-														<span class="state">Absent</span>
-													</div>
-													<div class="away">
-														<div class="ChekBoxes">
-															<input type="checkbox" value="None"  id="slide_div9" name="check" />
-															<label class ="labelSlide" for="slide_div9"></label>
-														</div>
-													</div>
-												</div>
-											</div>
-								 </div>
-							</li>
-							<li >
+							<h2 id="wait">Veuillez selectionner une Cohorte &agrave identifer gr&acircce &agrave la barre de recherche en haut &agrave droite.</h2>
 			      </ul>
 			    </div>
 			</div>

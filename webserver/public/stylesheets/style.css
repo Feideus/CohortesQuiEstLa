@@ -49,11 +49,11 @@ body{
 	color:#fff;
 }
 
-#buttonV:hover{
+.textareaV:hover{
 	background-color: rgb(184, 174, 151);
 	cursor : pointer;
 }
-#button:active{
+.textareaV:active{
 	background-color: rgba(124, 121, 125, 0.83);
 }
 .valid{

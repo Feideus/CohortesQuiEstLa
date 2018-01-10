@@ -4,6 +4,20 @@
 #main {
 	margin-top: 9em;
 }
+#wait{
+	font: 400 25px 'Open Sans', sans-serif;
+	color: #363636;
+	text-align: left;
+	padding: 0.8em 0 0;
+}
+#selectCohorte li{
+	display:inline-block;
+	float left;
+	
+}
+#selectCohorte label{
+
+}
 #tiles {
   list-style-type: none;
   position: relative; /** Needed to ensure items are laid out relative to this container **/
@@ -21,7 +35,7 @@
 	border-radius: 2px;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
-	display: none;
+	display : inline-block;
 	cursor: pointer;
 	border-radius: 0.2em;
 }
