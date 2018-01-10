@@ -8,7 +8,8 @@
     "start": "node app.js",
     "clean": "rm public/javascripts/browserify_test_bundle.js",
     "lint": "eslint public/javascripts/coreFunctions.js",
-    "relance": "npm run clean:bundle && npm run build:js && npm run start"
+    "relance": "npm run clean:bundle && npm run build:js && npm run start",
+    "test": "./node_modules/mocha/bin/mocha public/test"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
