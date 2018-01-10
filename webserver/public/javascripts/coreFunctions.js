@@ -5,6 +5,9 @@ var etudiantsEtPhotos = []; //tableau de couple INE:nom:photo
 var listePresence = []; //tableau de couple nom:présence
 //var indexEtudiantCourant = 0;
 var flagToCohorte = false; // set if Cohorte is loaded or not
+var horraire;
+var salle;
+var semaine;
 function getTextSelect(string) {
   var e = document.getElementById(string);
   var f = e.options[e.selectedIndex].text;
@@ -39,6 +42,16 @@ function fillOptionHorraire(content){
     flagToCohorte = true;
     identifierCohorte();
     }
+    else{
+      var horraireT = getTextSelect("horraire");
+      var semaineT = getTextSelect("semaine");
+      var salleT = getTextSelect("salle");
+      if (!(horraireT === horraire && semaineT == semaine && salleT ==salle)){
+        document.getElementById('tiles').innerHTML = "";
+        flagToCohorte = true;
+        identifierCohorte();
+      }
+    }
   }
   document.getElementById('validationButton').onclick = function(){
     if (flagToCohorte == true){
@@ -55,9 +68,9 @@ function fillOptionHorraire(content){
 
 function identifierCohorte()
 {
-    var horraire = getTextSelect("horraire");
-    var semaine = getTextSelect("semaine");
-    var salle = getTextSelect("salle");
+    horraire = getTextSelect("horraire");
+    semaine = getTextSelect("semaine");
+    salle = getTextSelect("salle");
 
 
 
